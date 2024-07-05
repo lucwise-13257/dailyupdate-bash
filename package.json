@@ -1,0 +1,15 @@
+{
+  "name": "dailyupdate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node --env-file env.local main.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
