@@ -16,8 +16,21 @@ async function getPackages() {
     })
   })
 }
+async function packagesError() {
+  const hostname = await shell("hostname")
+  await fetch(webhookURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      "content": `There was an error updating packages for ${hostname.stdout.trim()}`
+    })
+  })
+}
 try {
   getPackages()
 } catch(e) {
   console.log(e)
+  packagesError()
 }
