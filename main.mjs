@@ -6,7 +6,7 @@ async function getPackages() {
   await shell("sudo apt update")
   const hostname = await shell("hostname")
   const pkgs = await shell(`aptitude search "~U" | wc -l`)
-  const response = await fetch(webhookURL, {
+  await fetch(webhookURL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -15,7 +15,6 @@ async function getPackages() {
       "content": `There are ${pkgs.stdout.trim()} updates available for ${hostname.stdout.trim()}`
     })
   })
-  console.log(response)
 }
 try {
   getPackages()
